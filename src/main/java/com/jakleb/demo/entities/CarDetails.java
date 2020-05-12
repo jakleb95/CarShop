@@ -2,10 +2,12 @@ package com.jakleb.demo.entities;
 
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -25,7 +27,10 @@ public class CarDetails {
     private Long id;
 
     @NotNull
+    @OneToOne(mappedBy = "details")
     private Car car;
+
+    @NotNull
 
     @NotNull
     private String voivodeship;
@@ -51,6 +56,9 @@ public class CarDetails {
 
     private Integer owner;
 
+    private String description;
+
+    @ElementCollection
     private List<String> images;
 
 }

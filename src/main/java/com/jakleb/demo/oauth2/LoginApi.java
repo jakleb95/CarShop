@@ -21,6 +21,9 @@ public class LoginApi {
     JwtTokenGenerator jwtTokenGenerator;
 
     @Autowired
+    ObjectMapper jsonMapper;
+
+    @Autowired
     UserService userService;
     @PostMapping("/login")
     public String login(@RequestBody User user) throws Exception {
@@ -32,8 +35,6 @@ public class LoginApi {
         else {
             throw new Exception("Nie prawidłowe login lub hasło!");
         }
-
-        ObjectMapper jsonMapper = new ObjectMapper();
         return jsonMapper.writeValueAsString(token);
     }
 

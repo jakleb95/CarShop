@@ -3,6 +3,7 @@ package com.jakleb.demo.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jakleb.demo.oauth2.JwtFilter;
+import com.jakleb.demo.oauth2.JwtTokenGenerator;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,11 +17,16 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 
 
 @EnableWebSecurity(debug = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class AppConfig extends WebSecurityConfigurerAdapter{
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public JwtTokenGenerator jwtTokenGenerator(){
+        return new JwtTokenGenerator();
     }
 
     @Bean
