@@ -1,4 +1,4 @@
-package com.jakleb.demo.repository;
+package com.jakleb.demo.repositories;
 
 import com.jakleb.demo.entities.CarDetails;
 
